@@ -1,0 +1,17 @@
+{% extends "home.html" %} {%block navbar%} {% for menu in menu_items %}
+<li class="nav-item">
+  <a class="nav-link active" href="{{menu.urlName}}" aria-current="page"
+    >{{menu.text}}</a
+  >
+</li>
+{% endfor %} {% endblock navbar %} {% block content %} {% if book_list %}
+<ul>
+  {% for book in book_list %}
+  <li>
+    <a href="{{book.get_absolute_url}}">{{book.title}}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<h2>No Book to display</h2>
+{% endif %} {% endblock content %}

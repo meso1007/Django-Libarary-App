@@ -1,0 +1,26 @@
+{% extends "home.html" %} {%block navbar%} {% for menu in menu_items %}
+<li class="nav-item">
+  <a class="nav-link active" href="{{menu.urlName}}" aria-current="page"
+    >{{menu.text}}</a
+  >
+</li>
+{% endfor %} {% endblock navbar %} {% block content %}
+<div class="row justify-content-center align-items-center g-2">
+  <div class="col-12">
+    <h1>Welcome {{user.first_name}} to the localLibrary</h1>
+  </div>
+  <div class="col-6">
+    <ul>
+      <li><strong>Number of Books:</strong>{{num_books}}</li>
+      <li><strong>Number of Book Instance:</strong>{{num_instances}}</li>
+      <li>
+        <strong>Number of Available Book Instances:</strong
+        >{{num_available_bookinstances}}
+      </li>
+      <li><strong>Number of Author:</strong>{{num_authors}}</li>
+    </ul>
+  </div>
+  <div class="col">Column</div>
+</div>
+
+{% endblock content%}

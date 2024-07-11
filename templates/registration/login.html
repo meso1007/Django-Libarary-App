@@ -1,0 +1,38 @@
+{% extends "home.html" %}
+
+{% block content %}
+  <!-- Display form errors -->
+  {% if form.errors %}
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>Error</strong> username/password is incorrect.
+    </div>
+  {% endif %}
+
+  <!-- Display access errors -->
+  {% if next %}
+    {% if user.is_authenticated %}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>Error</strong> Your account does not have permission to access this page.
+      </div>
+    {% else %}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <strong>Error</strong> Please log in to view this page.
+      </div>
+    {% endif %}
+  {% endif %}
+
+  <!-- Login form -->
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %} 
+      {{ form.username.label_tag }}
+      {{ form.username }}
+    </div>
+      {{ form.password.label_tag }}
+      {{ form.password }}
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+  </form>
+{% endblock content %}

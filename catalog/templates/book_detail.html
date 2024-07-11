@@ -1,0 +1,42 @@
+{% extends "home.html" %} {%block navbar%} {% for menu in menu_items %}
+<li class="nav-item">
+  <a class="nav-link active" href="{{menu.urlName}}" aria-current="page"
+    >{{menu.text}}</a
+  >
+</li>
+{% endfor %} {% endblock navbar %} {%block content%}
+<div class="row justify-content-center align-items-center g-2">
+  <div class="col-4"><h4>Title:</h4></div>
+  <div class="col-8"><i>{{book.title}}</i></div>
+  <div class="col-4"><h4>Summary:</h4></div>
+  <div class="col-8"><i>{{book.summary}}</i></div>
+  <div class="col-4"><h4>ISBN:</h4></div>
+  <div class="col-8"><i>{{book.isbn}}</i></div>
+  <div class="col-4"><h4>Author:</h4></div>
+  <div class="col-8">
+    <i><a href="{{book.author.get_absolute_url}}">{{book.author}}</a></i>
+  </div>
+  <div class="col-4"><h4>Language:</h4></div>
+  <div class="col-8"><i>{{book.language}}</i></div>
+  <div class="col-4"><h4>Genre:</h4></div>
+  <div class="col-8"><i>{{book.genre.all|join:", "}}</i></div>  
+  {% comment %}  {% endcomment %}
+</div>
+
+<div class="row justify-content-center align-items-center g-2">
+  <div class="col">
+    {% for copy in book.bookinstance_set.all %}
+    <h2
+      class="{% if copy.status == 'a' %}text-success{% elif copy.status == 'm' %}text-danger{% else %}text-warning{% endif %}"
+    >
+      {{copy.get_status_display}}
+    </h2>
+    {% if copy.status != 'a' %}
+    <h3>Due returned: {{copy.due_back}}</h3>
+    {% endif %}
+    <p>Instance Code: {{copy.id}}</p>
+    {% endfor %}
+  </div>
+</div>
+
+{%endblock content%}

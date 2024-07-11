@@ -1,0 +1,8 @@
+{% extends "home.html" %}{%block navbar%} {% for menu in menu_items %}
+<li class="nav-item">
+  <a class="nav-link active" href="{{menu.urlName}}" aria-current="page"
+    >{{menu.text}}</a
+  >
+</li>
+{% endfor %} {% endblock navbar %} {% block content %} {{author.fname}}
+{%endblock content %}

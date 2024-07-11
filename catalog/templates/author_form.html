@@ -1,0 +1,18 @@
+{% extends "home.html" %}
+
+{% block navbar %}
+{% for menu in menu_items %}
+<li class="nav-item">
+    <a class="nav-link" href="{{menu.urlName}}" aria-current="page">{{menu.text}}</a>
+</li>
+{% endfor %}
+
+
+{% endblock navbar %}
+{% block content %}
+    <form method="post">
+        {%csrf_token%}
+        {{form.as_table}}
+        <button type="submit">Create</button>
+    </form>
+{% endblock content %}
