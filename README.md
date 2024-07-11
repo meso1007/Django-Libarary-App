@@ -1,32 +1,49 @@
-# Library System
+# Local Library Management System
 
-This project, built with the `library_system` app, manages Authors and Books within a library environment.
+This project is a Local Library Management System developed using the Python Django framework. Users can manage authors, books, and their instances. Here are the main features of the system:
 
-## Features
+## Key Features
 
-- **Number of Books:** {{num_books}}
-- **Number of Book Instances:** {{num_instances}}
-- **Number of Available Book Instances:** {{num_available_bookinstances}}
-- **Number of Authors:** {{num_authors}}
+- **Book Management**: Allows adding, editing, and deleting books.
+- **Instance Management**: Tracks the number of instances and available instances for each book.
+- **Author Management**: Enables adding, editing, and deleting authors.
+
+## Requirements
+
+- Python 3.x
+- Django 3.x
+- Other dependencies listed in `requirements.txt`
 
 ## Installation
 
-To run this project locally:
+1. Clone the repository:
 
-1. Clone the repository.
-2. Navigate to the project directory.
-3. Install dependencies: `pip install -r requirements.txt`.
-4. Start the server: `python manage.py runserver`.
+   ```bash
+   git clone https://github.com/your/repository.git
+   cd repository
+   ```
+
+2. Set up a virtual environment:
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate # On Windows: venv\Scripts\activate
+   ```
+
+3. Install required packages:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Migrate the database:
+   ```bash
+   python manage.py migrate
+   ```
+5. Start the application:
+   ```bash
+   python manage.py runserver
+   ```
 
 ## Usage
 
-Once the server is running, visit the application in your web browser. You can:
-
-- Manage Authors and Books.
-- View and update details about the library's inventory.
-
-## Technologies Used
-
-- Django
-- HTML/CSS
-- Python
+- Access the admin interface by navigating to `http://localhost:8000` in your browser.
+- Add books, authors, and manage their instances.
